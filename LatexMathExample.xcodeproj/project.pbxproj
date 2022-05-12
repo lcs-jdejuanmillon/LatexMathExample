@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D18ADC0282DA55700EEFA66 /* SolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18ADBF282DA55700EEFA66 /* SolutionView.swift */; };
+		0D18ADC2282DA59500EEFA66 /* UnitsAndTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18ADC1282DA59500EEFA66 /* UnitsAndTypes.swift */; };
+		0D18ADC4282DA5AF00EEFA66 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D18ADC3282DA5AF00EEFA66 /* Variable.swift */; };
 		0E233357275FC3870078F5AD /* LatexMathExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E233356275FC3870078F5AD /* LatexMathExampleApp.swift */; };
 		0E233359275FC3870078F5AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E233358275FC3870078F5AD /* ContentView.swift */; };
 		0E23335B275FC3890078F5AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E23335A275FC3890078F5AD /* Assets.xcassets */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D18ADBF282DA55700EEFA66 /* SolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolutionView.swift; sourceTree = "<group>"; };
+		0D18ADC1282DA59500EEFA66 /* UnitsAndTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsAndTypes.swift; sourceTree = "<group>"; };
+		0D18ADC3282DA5AF00EEFA66 /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
 		0E233353275FC3870078F5AD /* LatexMathExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LatexMathExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E233356275FC3870078F5AD /* LatexMathExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatexMathExampleApp.swift; sourceTree = "<group>"; };
 		0E233358275FC3870078F5AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				0E233358275FC3870078F5AD /* ContentView.swift */,
+				0D18ADBF282DA55700EEFA66 /* SolutionView.swift */,
 				0EE1827F275FD0F700B3C63F /* Helpers */,
 			);
 			path = Views;
@@ -97,7 +104,9 @@
 		0EE1827F275FD0F700B3C63F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0D18ADC1282DA59500EEFA66 /* UnitsAndTypes.swift */,
 				0EE1827D275FCFBA00B3C63F /* MathTextView.swift */,
+				0D18ADC3282DA5AF00EEFA66 /* Variable.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -225,7 +234,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EE1827E275FCFBA00B3C63F /* MathTextView.swift in Sources */,
+				0D18ADC4282DA5AF00EEFA66 /* Variable.swift in Sources */,
+				0D18ADC0282DA55700EEFA66 /* SolutionView.swift in Sources */,
 				0E233359275FC3870078F5AD /* ContentView.swift in Sources */,
+				0D18ADC2282DA59500EEFA66 /* UnitsAndTypes.swift in Sources */,
 				0E233357275FC3870078F5AD /* LatexMathExampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
