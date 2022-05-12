@@ -18,7 +18,7 @@ let unitText = [
     ["m", "km", "cm", "mm"],
     ["m/s", "km/h"],
     ["m/s", "km/h"],
-    ["m/s^2"]
+    ["m/s\u{00B2}"]
 ]
 let unitValues = [
     [1, 60, 3600],

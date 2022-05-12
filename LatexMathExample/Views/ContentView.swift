@@ -30,9 +30,9 @@ struct ContentView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Toggle(isOn: $customSigFigs, label: {Text("Custom Significant Figures")})
-            Stepper(value: $numberSigFigs, in: 1...10, step: 1, label: {Text("Number of Significant Figures: \(numberSigFigs)")})
+            Stepper(value: $numberSigFigs, in: 1...10, step: 1, label: {Text("Significant Figures: \(numberSigFigs)")})
                 .opacity(customSigFigs ? 1.0 : 0.0)
-            Text("Use 'e' or 'E' for scientific notation. \"1.2e3\", \"1.2E3\", and \"1200\" are all valid and equivalent inputs but \"1.2×10^3\" and any other format is not.")
+            MathTextView(string: .constant("Use 'e' or 'E' for scientific notation. [math]1.2e3[/math]  [math]1.2E3[/math] [math]1200[/math] are all valid and equivalent inputs but [math]1.2\\times10^3[/math]  and any other format is not."))
             HStack {
                 Image(systemName: "plus.circle")
                     .foregroundColor(.blue)
@@ -106,6 +106,7 @@ struct ContentView: View {
                 Spacer()
             }
             .opacity(showButton ? 1.0 : 0.0)
+            Spacer()
         }
     }
     func list(i: Int) -> [Int] {
