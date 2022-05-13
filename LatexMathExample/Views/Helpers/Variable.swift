@@ -43,9 +43,7 @@ struct Variable {
             }
             if currentCharacter == "." {
                 hasDecimal = true
-                if isSigFig {
-                    sigFigCounter += zeroCounter
-                }
+                sigFigCounter += zeroCounter
                 continue
             }
             if currentCharacter != "0" {
