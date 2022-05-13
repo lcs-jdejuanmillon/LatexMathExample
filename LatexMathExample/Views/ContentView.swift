@@ -94,19 +94,20 @@ struct ContentView: View {
                     }
                 }
             }
-//            HStack {
-//                Spacer()
-//                NavigationLink(destination: SolutionView(knowns: listOfKnowns,
-//                                                         solveFor: solutionType,
-//                                                         units: solutionUnit)) {
-//                    Button("Show Solution") {
-//
-//                    }
-//                    .buttonStyle(.bordered)
-//                    .cornerRadius(20)
-//                }
-//                Spacer()
-//            }
+            HStack {
+                Spacer()
+                NavigationLink(destination: SolutionView(knowns: listOfKnowns,
+                                                         solveFor: solutionType,
+                                                         units: solutionUnit
+                                                         sigFigs: getSigFigs())) {
+                    Button("Show Solution") {
+
+                    }
+                    .buttonStyle(.bordered)
+                    .cornerRadius(20)
+                }
+                Spacer()
+            }
             .opacity(showButton ? 1.0 : 0.0)
             Spacer()
         }
