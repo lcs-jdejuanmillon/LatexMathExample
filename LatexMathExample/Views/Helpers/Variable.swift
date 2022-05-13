@@ -38,6 +38,9 @@ struct Variable {
         var sigFigCounter = 0
         var zeroCounter = 0
         for currentCharacter in input {
+            if value < 0 && currentCharacter == input.first {
+                continue
+            }
             if currentCharacter != "0" {
                 isSigFig = true
             }
