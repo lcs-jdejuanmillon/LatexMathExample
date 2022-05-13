@@ -41,7 +41,7 @@ struct SolutionView: View {
     [math] 2\\vec{a}\\Delta \\vec{d} = \\vec{v_2}^2 - \\vec{v_1}^2 [/math]
     [math] \\Delta \\vec{d} = \\frac{\\vec{v_2}^2 - \\vec{v_1}^2)}{2\\vec{a}} [/math]
     [math] \\Delta \\vec{d} = \\frac{\(str(i: actualValue(i: 2)))^2 - \(str(i: actualValue(i: 1)))^2}{2(\(str(i: actualValue(i: 3)))} [/math]
-    [math] \\Delta \\vec{d} = \(str(i: (actualValue(i: 2) * actualValue(i: 2) - actualValue(i: 1) * actualValue(i: 1)) / 2 / actualValue(i: 3) / unitValues[solveFor][unit])) \(unitValues[solveFor][unit]) [/math]
+    [math] \\Delta \\vec{d} = \(str(i: (actualValue(i: 2) * actualValue(i: 2) - actualValue(i: 1) * actualValue(i: 1)) / 2 / actualValue(i: 3) / unitValues[solveFor][unit])) \(unitText[solveFor][unit]) [/math]
     """))
         }
         if index == 1 {
@@ -49,7 +49,7 @@ struct SolutionView: View {
     [math] \\Delta \\vec{d} = \\vec{v_2} \\Delta t - \\frac{1}{2} \\vec{a} + \\Delta t^2 [/math]
     [math] \\Delta \\vec{d} = \\vec{v_2} \\Delta t - \\frac{1}{2} \\vec{a} + \\Delta t^2 [/math]
     [math] \\Delta \\vec{d} = (\(str(i: actualValue(i: 2))))(\(str(i: actualValue(i: 0)))) - \\frac{1}{2}(\(str(i: actualValue(i: 3))))(\(str(i: actualValue(i: 0))))^2 [/math]
-    [math] \\Delta \\vec{d} = \(str(i: (actualValue(i: 2) * actualValue(i: 0) - actualValue(i: 3) * actualValue(i: 0) * actualValue(i: 0) / 2) / unitValues[solveFor][unit])) \(unitValues[solveFor][unit]) [/math]
+    [math] \\Delta \\vec{d} = \(str(i: (actualValue(i: 2) * actualValue(i: 0) - actualValue(i: 3) * actualValue(i: 0) * actualValue(i: 0) / 2) / unitValues[solveFor][unit])) \(unitText[solveFor][unit]) [/math]
     """))
         }
         if index == 2 {
@@ -57,7 +57,7 @@ struct SolutionView: View {
     [math] \\Delta \\vec{d} = \\vec{v_1} \\Delta t + \\frac{1}{2} \\vec{a} + \\Delta t^2 [/math]
     [math] \\Delta \\vec{d} = \\vec{v_1} \\Delta t + \\frac{1}{2} \\vec{a} + \\Delta t^2 [/math]
     [math] \\Delta \\vec{d} = (\(str(i: actualValue(i: 1))))(\(str(i: actualValue(i: 0)))) + \\frac{1}{2}(\(str(i: actualValue(i: 3))))(\(str(i: actualValue(i: 0))))^2 [/math]
-    [math] \\Delta \\vec{d} = \(str(i: (actualValue(i: 1) * actualValue(i: 0) + actualValue(i: 3) * actualValue(i: 0) * actualValue(i: 0) / 2) / unitValues[solveFor][unit])) \(unitValues[solveFor][unit]) [/math]
+    [math] \\Delta \\vec{d} = \(str(i: (actualValue(i: 1) * actualValue(i: 0) + actualValue(i: 3) * actualValue(i: 0) * actualValue(i: 0) / 2) / unitValues[solveFor][unit])) \(unitText[solveFor][unit]) [/math]
     """))
         }
         return MathTextView(string: .constant("""
