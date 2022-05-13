@@ -41,6 +41,13 @@ struct Variable {
             if value < 0 && currentCharacter == input.first {
                 continue
             }
+            if currentCharacter == "." {
+                hasDecimal = true
+                if isSigFig {
+                    sigFigCounter += zeroCounter
+                }
+                continue
+            }
             if currentCharacter != "0" {
                 isSigFig = true
             }
@@ -50,11 +57,6 @@ struct Variable {
                 }
                 if hasDecimal {
                     sigFigCounter += 1
-                    continue
-                }
-                if currentCharacter == "." {
-                    hasDecimal = true
-                    sigFigCounter += zeroCounter
                     continue
                 }
                 if currentCharacter == "0" {
