@@ -28,10 +28,9 @@ struct SolutionView: View {
         return index
     }
     var body: some View {
-        Solution(index: index)
-            .task {
-                
-            }
+        ScrollView {
+            Solution(index: index)
+        }
     }
     func Solution(index: Int) -> MathTextView {
         if index == 0 {
@@ -78,7 +77,7 @@ struct SolutionView: View {
         let x = Int((log10(abs(i)))) + 1
         let y = pow(10.0, Double(sigFigs - x))
         if scientificNotation {
-            return "\(String(format: "%.\(sigFigs - 1)f", i * pow(10.0, Double(x - 1))))\\times 10^\(x - 1)"
+            return "\(String(format: "%.\(sigFigs - 1)f", i / pow(10.0, Double(x - 1))))\\times 10^\(x - 1)"
         }
         if sigFigs < x {
             return "\(Int(round(i / y) * y))"
