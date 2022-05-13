@@ -72,7 +72,15 @@ struct SolutionView: View {
         return knowns[indexOfKnown[i]].value * unitValues[knowns[indexOfKnown[i]].type][knowns[indexOfKnown[i]].unit]
     }
     func str(i: Double) -> String {
-        return String(format: "%.\(sigFigs)f", i)
+        if i == 0 {
+            return "0"
+        }
+        let x = Int(ceil(log10(abs(i))))
+        let y = pow(10.0, Double(sigFigs - x))
+        if sigFigs < x {
+            return "\(Int(round(i / y) * y))"
+        }
+        return String(format: "%.\(sigFigs - x)f", i)
     }
 }
 
