@@ -80,6 +80,9 @@ struct SolutionView: View {
         if sigFigs < x {
             return "\(Int(round(i / y) * y))"
         }
+        if sigFigs == x {
+            return "\(Int(round(i / y) * y))."
+        }
         return String(format: "%.\(sigFigs - x)f", i)
     }
 }
