@@ -16,6 +16,7 @@ struct ContentView: View {
     @State var solutionType = 4
     @State var solutionUnit = 0
     @State var aux = [0]
+    @State var scientificNotation = false
     var showButton: Bool {
         if listOfKnowns.count < 3 {
             return false
@@ -29,6 +30,7 @@ struct ContentView: View {
     }
     var body: some View {
         VStack(alignment: .leading) {
+            Toggle(isOn: $scientificNotation, label: {Text("Scientific Notation in Solution")})
             Toggle(isOn: $customSigFigs, label: {Text("Custom Significant Figures")})
             Stepper(value: $numberSigFigs, in: 1...10, step: 1, label: {Text("Significant Figures: \(numberSigFigs)")})
                 .opacity(customSigFigs ? 1.0 : 0.0)
@@ -103,7 +105,8 @@ struct ContentView: View {
             NavigationLink(destination: SolutionView(knowns: listOfKnowns,
                                                      solveFor: solutionType,
                                                      unit: solutionUnit,
-                                                     sigFigs: getSigFigs())) {
+                                                     sigFigs: getSigFigs(),
+                                                     scientificNotation: scientificNotation)) {
                 Text("Show Solution")
             }
             Spacer()

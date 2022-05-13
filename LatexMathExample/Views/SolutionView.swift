@@ -4,8 +4,7 @@
 //
 //  Created by Jacobo de Juan Millon on 2022-05-11.
 //
-// Change str to actually use sigfigs
-
+// Have option to output scientific notation
 import SwiftUI
 
 struct SolutionView: View {
@@ -13,6 +12,7 @@ struct SolutionView: View {
     let solveFor: Int
     let unit: Int
     let sigFigs: Int
+    let scientificNotation: Bool
     var indexOfKnown: [Int] {
         var indexOfKnown = [0, 0, 0, 0, 0]
         for i in 0..<knowns.count {
@@ -75,8 +75,11 @@ struct SolutionView: View {
         if i == 0 {
             return "0"
         }
-        let x = Int(ceil(log10(abs(i))))
+        let x = Int((log10(abs(i)))) + 1
         let y = pow(10.0, Double(sigFigs - x))
+        if scientificNotation {
+            return "\(String(format: "%.\(sigFigs - 1)f", i * pow(10.0, Double(x - 1))))\\times 10^\(x - 1)"
+        }
         if sigFigs < x {
             return "\(Int(round(i / y) * y))"
         }
@@ -94,6 +97,7 @@ struct SolutionView_Previews: PreviewProvider {
                               Variable(type: 2, input: "4", unit: 0)],
                      solveFor: 4,
                      unit: 0,
-                     sigFigs: 3)
+                     sigFigs: 3,
+                     scientificNotation: false)
     }
 }
