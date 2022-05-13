@@ -115,10 +115,10 @@ struct SolutionView: View {
             return "\(String(format: "%.\(sigFigs - 1)f", i / pow(10.0, Double(x - 1))))\\times 10^\(x - 1)"
         }
         if sigFigs < x {
-            return "\(Int(round(i / y) * y))"
+            return "\(Int(round(i * y) / y))"
         }
         if sigFigs == x {
-            return "\(Int(round(i / y) * y))."
+            return "\(Int(round(i * y) / y))."
         }
         return String(format: "%.\(sigFigs - x)f", i)
     }
