@@ -12,7 +12,7 @@ struct ContentView: View {
     @State var customSigFigs = false
     @State var numberSigFigs = 1
     @State var listOfKnowns = [Variable(type: 0, input: "", unit: 0)]
-    @State var isNotUsed = [false, false, true, true, true]
+    @State var isNotUsed = [false, true, true, true, false]
     @State var solutionType = 4
     @State var solutionUnit = 0
     @State var aux = [0]
@@ -94,23 +94,22 @@ struct ContentView: View {
                     }
                 }
             }
-            HStack {
-                Spacer()
-                NavigationLink(destination: SolutionView(knowns: listOfKnowns,
-                                                         solveFor: solutionType,
-                                                         units: solutionUnit
-                                                         sigFigs: getSigFigs())) {
-                    Button("Show Solution") {
-
-                    }
-                    .buttonStyle(.bordered)
-                    .cornerRadius(20)
-                }
-                Spacer()
-            }
-            .opacity(showButton ? 1.0 : 0.0)
+            ButtonView
             Spacer()
         }
+    }
+    var ButtonView: some View {
+        HStack {
+            NavigationLink(destination: SolutionView(knowns: listOfKnowns,
+                                                     solveFor: solutionType,
+                                                     unit: solutionUnit,
+                                                     sigFigs: getSigFigs())) {
+                Text("Show Solution")
+            }
+            Spacer()
+        }
+        .opacity(showButton ? 1.0 : 0.0)
+
     }
     func list(i: Int) -> [Int] {
         var list: [Int] = []

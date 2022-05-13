@@ -4,6 +4,7 @@
 //
 //  Created by Jacobo de Juan Millon on 2022-05-11.
 //
+// Change str to actually use sigfigs
 
 import SwiftUI
 
