@@ -11,9 +11,9 @@ import RichTextView
 struct ContentView: View {
     @State var customSigFigs = false
     @State var numberSigFigs = 1
-    @State var listOfKnowns = [Variable(typeOfVariable: 0, input: "", unit: 0)]
+    @State var listOfKnowns = [Variable(type: 0, input: "", unit: 0)]
     @State var isNotUsed = [false, false, true, true, true]
-    @State var solutionType = 1
+    @State var solutionType = 4
     @State var solutionUnit = 0
     @State var aux = [0]
     var showButton: Bool {
@@ -21,7 +21,7 @@ struct ContentView: View {
             return false
         }
         for i in 0..<listOfKnowns.count {
-            if !listOfKnowns[i].validInput || (!isVector[listOfKnowns[i].typeOfVariable] && listOfKnowns[i].value <= 0) {
+            if !listOfKnowns[i].validInput || (!isVector[listOfKnowns[i].type] && listOfKnowns[i].value <= 0) {
                 return false
             }
         }
@@ -40,7 +40,7 @@ struct ContentView: View {
                     .onTapGesture {
                         let x = list(i: 0)
                         let y = isNotUsed[x[0]] ? x[0] : x[1]
-                        listOfKnowns.append(Variable(typeOfVariable: y, input: "", unit: 0))
+                        listOfKnowns.append(Variable(type: y, input: "", unit: 0))
                         isNotUsed[y] = false
                         aux.append(y)
                     }
@@ -48,12 +48,12 @@ struct ContentView: View {
             }
             ForEach(0..<listOfKnowns.count, id: \.self) { i in
                 HStack {
-                    Picker("Type of known", selection: $listOfKnowns[i].typeOfVariable) {
-                        ForEach(list(i: listOfKnowns[i].typeOfVariable), id: \.self) { j in
+                    Picker("Type of known", selection: $listOfKnowns[i].type) {
+                        ForEach(list(i: listOfKnowns[i].type), id: \.self) { j in
                             Text(types[j])
                         }
                     }
-                    .onChange(of: listOfKnowns[i].typeOfVariable) { newValue in
+                    .onChange(of: listOfKnowns[i].type) { newValue in
                         isNotUsed[aux[i]] = true
                         isNotUsed[newValue] = false
                         aux[i] = newValue
@@ -61,16 +61,16 @@ struct ContentView: View {
                     }
                     TextField("Value", text: $listOfKnowns[i].input)
                     Picker("Units", selection: $listOfKnowns[i].unit) {
-                        ForEach(0..<unitValues[listOfKnowns[i].typeOfVariable].count, id: \.self) { j in
-                            Text(unitText[listOfKnowns[i].typeOfVariable][j])
+                        ForEach(0..<unitValues[listOfKnowns[i].type].count, id: \.self) { j in
+                            Text(unitText[listOfKnowns[i].type][j])
                         }
                     }
                 }
                 ZStack {
-                    Text("* Give a valid numeric value for the \(types[listOfKnowns[i].typeOfVariable])")
+                    Text("* Give a valid numeric value for the \(types[listOfKnowns[i].type])")
                         .opacity(listOfKnowns[i].validInput ? 0.0 : 1.0)
-                    Text("* \(types[listOfKnowns[i].typeOfVariable]) has to be positive")
-                        .opacity(isVector[listOfKnowns[i].typeOfVariable] || !listOfKnowns[i].validInput || listOfKnowns[i].value > 0 ? 0.0 : 1.0)
+                    Text("* \(types[listOfKnowns[i].type]) has to be positive")
+                        .opacity(isVector[listOfKnowns[i].type] || !listOfKnowns[i].validInput || listOfKnowns[i].value > 0 ? 0.0 : 1.0)
                 }
                 .foregroundColor(.red)
                 .font(.caption2)
@@ -94,17 +94,19 @@ struct ContentView: View {
                     }
                 }
             }
-            HStack {
-                Spacer()
-                NavigationLink(destination: SolutionView()) {
-                    Button("Show Solution") {
-                        
-                    }
-                    .buttonStyle(.bordered)
-                    .cornerRadius(20)
-                }
-                Spacer()
-            }
+//            HStack {
+//                Spacer()
+//                NavigationLink(destination: SolutionView(knowns: listOfKnowns,
+//                                                         solveFor: solutionType,
+//                                                         units: solutionUnit)) {
+//                    Button("Show Solution") {
+//
+//                    }
+//                    .buttonStyle(.bordered)
+//                    .cornerRadius(20)
+//                }
+//                Spacer()
+//            }
             .opacity(showButton ? 1.0 : 0.0)
             Spacer()
         }

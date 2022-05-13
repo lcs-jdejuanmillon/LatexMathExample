@@ -8,11 +8,11 @@
 import Foundation
 
 struct Variable {
-    var typeOfVariable: Int
+    var type: Int
     var input: String
     var unit: Int
     var validInput: Bool {
-        if input == "g" && types[typeOfVariable] == "Acceleration" {
+        if input == "g" && types[type] == "Acceleration" {
             return true
         }
         if let _ = Double(input) {
@@ -22,7 +22,7 @@ struct Variable {
     }
     var value: Double {
         if validInput {
-            if input == "g" && types[typeOfVariable] == "Acceleration" {
+            if input == "g" && types[type] == "Acceleration" {
                 return 9.8 / Double(unit)
             }
             return Double(input)!
