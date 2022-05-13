@@ -30,7 +30,7 @@ struct Variable {
         return 1
     }
     var sigFigs: Int {
-        if !validInput || input == "g" {
+        if !validInput || input == "g" || value == 0 {
             return 10
         }
         var isSigFig = true
