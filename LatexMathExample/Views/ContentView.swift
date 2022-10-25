@@ -17,6 +17,7 @@ struct ContentView: View {
     @State var solutionUnit = 0
     @State var aux = [0]
     @State var scientificNotation = false
+    @State var removingActivated = false
     var showButton: Bool {
         if listOfKnowns.count < 3 {
             return false
@@ -40,18 +41,34 @@ struct ContentView: View {
                     .foregroundColor(.blue)
                     .opacity(listOfKnowns.count == types.count - 1 ? 0.0 : 1.0)
                     .onTapGesture {
-                        let x = list(i: 0)
+                        let x = listOfOptions(i: 0)
                         let y = isNotUsed[x[0]] ? x[0] : x[1]
                         listOfKnowns.append(Variable(type: y, input: "", unit: 0))
                         isNotUsed[y] = false
                         aux.append(y)
                     }
-                Text("Knowns:")
+                Text("List of Knowns:")
+                    .bold()
+                Spacer()
+                Button(action: {
+                    removingActivated = !removingActivated
+                }, label: {
+                    Text(removingActivated ? "Done" : "Edit")
+                })
             }
             ForEach(0..<listOfKnowns.count, id: \.self) { i in
                 HStack {
+                    Image(systemName: "minus.circle")
+                        .foregroundColor(.red)
+                        .opacity(removingActivated ? 1.0 : 0.0)
+                        .onTapGesture {
+                            isNotUsed[i] = true
+                            listOfKnowns[i].unit = 0
+                            listOfKnowns[i].input = ""
+                            listOfKnowns.remove(at: i)
+                        }
                     Picker("Type of known", selection: $listOfKnowns[i].type) {
-                        ForEach(list(i: listOfKnowns[i].type), id: \.self) { j in
+                        ForEach(listOfOptions(i: listOfKnowns[i].type), id: \.self) { j in
                             Text(types[j])
                         }
                     }
@@ -67,6 +84,7 @@ struct ContentView: View {
                             Text(unitText[listOfKnowns[i].type][j])
                         }
                     }
+                    Spacer()
                 }
                 ZStack {
                     Text("* Give a valid numeric value for the \(types[listOfKnowns[i].type])")
@@ -80,7 +98,7 @@ struct ContentView: View {
             HStack {
                 Text("Solve for:")
                 Picker("Type of known", selection: $solutionType) {
-                    ForEach(list(i: solutionType), id: \.self) { j in
+                    ForEach(listOfOptions(i: solutionType), id: \.self) { j in
                         Text(types[j])
                     }
                 }
@@ -99,6 +117,7 @@ struct ContentView: View {
             ButtonView
             Spacer()
         }
+        .padding()
     }
     var ButtonView: some View {
         HStack {
@@ -114,7 +133,7 @@ struct ContentView: View {
         .opacity(showButton ? 1.0 : 0.0)
 
     }
-    func list(i: Int) -> [Int] {
+    func listOfOptions(i: Int) -> [Int] {
         var list: [Int] = []
         for j in 0..<types.count {
             if isNotUsed[j] || i == j {
