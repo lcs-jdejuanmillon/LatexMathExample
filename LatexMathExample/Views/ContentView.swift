@@ -72,6 +72,7 @@ struct ContentView: View {
                             Text(types[j])
                         }
                     }
+                    .frame(width: 150)
                     .onChange(of: listOfKnowns[i].type) { newValue in
                         isNotUsed[aux[i]] = true
                         isNotUsed[newValue] = false
