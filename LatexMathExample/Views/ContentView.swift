@@ -35,7 +35,10 @@ struct ContentView: View {
             Toggle(isOn: $customSigFigs, label: {Text("Custom Significant Figures")})
             Stepper(value: $numberSigFigs, in: 1...10, step: 1, label: {Text("Significant Figures: \(numberSigFigs)")})
                 .opacity(customSigFigs ? 1.0 : 0.0)
-            MathTextView(string: .constant("Use \"g\" for the acceleration due to gravity. Use 'e' or 'E' for scientific notation. [math]1.2e3[/math],  [math]1.2E3[/math], and [math]1200[/math] are all valid and equivalent inputs but [math]1.2\\times10^3[/math]  and any other format is not."))
+            VStack {
+                MathTextView(string: .constant("Use \"g\" for the acceleration due to gravity. Use 'e' or 'E' for scientific notation. [math]1.2e3[/math],  [math]1.2E3[/math], and [math]1200[/math] are all valid and equivalent inputs but [math]1.2\\times10^3[/math]  and any other format is not."))
+            }
+            .frame(height: 150)
             HStack {
                 Image(systemName: "plus.circle")
                     .foregroundColor(.blue)
